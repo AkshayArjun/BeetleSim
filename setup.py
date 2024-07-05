@@ -14,7 +14,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*.launch.py')),
         ('share/' + package_name + '/description', glob('description/*.xacro')),
-        
+
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -25,7 +25,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = rl_rover2.publisher:main'
+            'talker = rl_rover2.publisher:main',
+            'controller = rl_rover2.controller:main',
         ],
     },
 )
