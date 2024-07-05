@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <gazebo>
+      <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+        <ros>
+          <remapping>odom:=odom/unfiltered</remapping>
+        </ros>
+
+        <num_wheel_pairs>2</num_wheel_pairs>
+        <left_joint>motor_fl_wheel</left_joint>
+        <right_joint>motor_fr_wheel</right_joint>
+        <left_joint>motor_bl_wheel</left_joint>
+        <right_joint>motor_br_wheel</right_joint>
+
+        <wheel_separation>0.42</wheel_separation>
+        <wheel_separation>0.42</wheel_separation>
+        <wheel_diameter>0.15</wheel_diameter>
+        <wheel_diameter>0.15</wheel_diameter>
+
+        <updateRate>100</updateRate>
+        <max_wheel_acceleration>1.0</max_wheel_acceleration>
+        <robot_base_frame>base_link</robot_base_frame>
+        <publish_odom>true</publish_odom>
+        <publish_odom_tf>true</publish_odom_tf>
+        <publish_wheel_tf>true</publish_wheel_tf>
+        <odometry_frame>odom</odometry_frame>
+        <odometry_topic>odom</odometry_topic>
+        <command_topic>cmd_vel</command_topic>
+
+      </plugin>
+    </gazebo>
+</robot>

@@ -1,0 +1,301 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" > 
+    <xacro:include filename="inertial_macros.xacro"/>
+    <material name="white">
+        <color rgba="1 1 1 1" />
+    </material>
+
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
+    <material name="orange">
+        <color rgba="1 0.3 0.1 1"/>
+    </material>
+
+    <material name="blue">
+        <color rgba="0.2 0.2 1 1"/>
+    </material>
+
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+
+    <material name = "silver">
+        <color rgba="0.8 0.8 0.8 1"/>
+    </material>
+    <!---base link-->
+
+    <link name = "base_link">
+    </link>
+
+    <!--chassis link-->
+
+    <joint name = "chassis_joint" type = "fixed">
+        <parent link = "base_link"/>
+        <child link = "chassis"/>
+        <origin xyz = "0 0 0.095" rpy="0 0 0"/>
+    </joint>
+
+    <link name = "chassis">
+        <visual>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry> 
+                <box size="0.54 0.42 0.04"/>
+            </geometry>
+            <material name = "silver"/>
+        </visual>
+        <collision>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size = "0.54 0.42 0.04"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="2.5" x ="0.54" y="0.42" z="0.0">
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="chassis">
+        <material>Gazebo/Silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+    <!-- wheel fl full module -->
+    <joint name = "chassis_motor_fl" type = "fixed">
+        <parent link = "chassis"/>
+        <child link = "motor_fl"/>
+        <origin xyz = "0.16 0.21 -0.020" rpy="0 0 0"/>
+    </joint>
+
+    <link name = "motor_fl">
+        <visual>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry> 
+                <box size="0.025 0.025 0.020"/>
+            </geometry>
+            <material name = "silver"/>
+        </visual>
+        <collision>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size = "0.025 0.025 0.020"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x ="0.025" y="0.025" z="0.020">
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <joint name = "motor_fl_wheel" type = "continuous">
+        <parent link = "motor_fl"/>
+        <child link = "wheel_fl"/>
+        <origin xyz = "0 0 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz = "0 0 1"/>
+    </joint>
+
+    <link name = "wheel_fl">
+        <visual>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry> 
+                <cylinder radius="0.075" length="0.02"/>
+            </geometry>
+            <material name = "black"/>
+        </visual>
+        <collision>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.075" length="0.02"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.02" radius="0.075">
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="wheel_fl">
+        <material>Gazebo/Black</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+    <!-- wheel fr full module -->
+    <joint name = "chassis_motor_fr" type = "fixed">
+        <parent link = "chassis"/>
+        <child link = "motor_fr"/>
+        <origin xyz = "0.16 -0.21 -0.020" rpy="0 0 0"/>
+    </joint>
+
+    <link name = "motor_fr">
+        <visual>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry> 
+                <box size="0.025 0.025 0.020"/>
+            </geometry>
+            <material name = "silver"/>
+        </visual>
+        <collision>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size = "0.025 0.025 0.020"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x ="0.025" y="0.025" z="0.020">
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <joint name = "motor_fr_wheel" type = "continuous">
+        <parent link = "motor_fr"/>
+        <child link = "wheel_fr"/>
+        <origin xyz = "0 0 0" rpy="${pi/2} 0 0"/>
+        <axis xyz = "0 0 -1"/>
+    </joint>
+
+    <link name = "wheel_fr">
+        <visual>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry> 
+                <cylinder radius="0.075" length="0.02"/>
+            </geometry>
+            <material name = "black"/>
+        </visual>
+        <collision>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.075" length="0.02"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.02" radius="0.075">
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="wheel_fr">
+        <material>Gazebo/Black</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+    <!-- wheel bl full module -->
+    <joint name = "chassis_motor_bl" type = "fixed">
+        <parent link = "chassis"/>
+        <child link = "motor_bl"/>
+        <origin xyz = "-0.16 0.21 -0.020" rpy="0 0 0"/>
+    </joint>
+
+    <link name = "motor_bl">
+        <visual>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry> 
+                <box size="0.025 0.025 0.020"/>
+            </geometry>
+            <material name = "silver"/>
+        </visual>
+        <collision>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size = "0.025 0.025 0.020"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x ="0.025" y="0.025" z="0.020">
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <joint name = "motor_bl_wheel" type = "continuous">
+        <parent link = "motor_bl"/>
+        <child link = "wheel_bl"/>
+        <origin xyz = "0 0 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz = "0 0 1"/>
+    </joint>
+
+    <link name = "wheel_bl">
+        <visual>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry> 
+                <cylinder radius="0.075" length="0.02"/>
+            </geometry>
+            <material name = "black"/>
+        </visual>
+        <collision>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.075" length="0.02"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.02" radius="0.075">
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="wheel_bl">
+        <material>Gazebo/Black</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+    <!-- wheel br full module -->
+     <joint name = "chassis_motor_br" type = "fixed">
+        <parent link = "chassis"/>
+        <child link = "motor_br"/>
+        <origin xyz = "-0.16 -0.21 -0.020" rpy="0 0 0"/>
+    </joint>
+
+    <link name = "motor_br">
+        <visual>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry> 
+                <box size="0.025 0.025 0.020"/>
+            </geometry>
+            <material name = "silver"/>
+        </visual>
+        <collision>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size = "0.025 0.025 0.020"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x ="0.025" y="0.025" z="0.020">
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <joint name = "motor_br_wheel" type = "continuous">
+        <parent link = "motor_br"/>
+        <child link = "wheel_br"/>
+        <origin xyz = "0 0 0" rpy="${pi/2} 0 0"/>
+        <axis xyz = "0 0 -1"/>
+    </joint>
+
+    <link name = "wheel_br">
+        <visual>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry> 
+                <cylinder radius="0.075" length="0.02"/>
+            </geometry>
+            <material name = "black"/>
+        </visual>
+        <collision>
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.075" length="0.02"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.02" radius="0.075">
+            <origin xyz = "0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+    <gazebo reference="wheel_br">
+        <material>Gazebo/Black</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+
+    <!--                        end                            -->
+    
+</robot>
+
+

@@ -7,6 +7,11 @@
   <maintainer email="aakshay1114@gmail.com">akshay</maintainer>
   <license>TODO: License declaration</license>
 
+  <depend>rclpy</depend> 
+  <depend>urdf</depend>
+  <depend>launch</depend>
+  
+
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
