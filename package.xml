@@ -10,6 +10,7 @@
   <depend>rclpy</depend> 
   <depend>urdf</depend>
   <depend>launch</depend>
+  <depend>std_msgs</depend>
   
 
   <test_depend>ament_copyright</test_depend>
