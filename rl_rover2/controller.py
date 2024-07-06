@@ -81,8 +81,8 @@ class controller(Node):
         msg.linear.x = self.x * self.speed
         msg.linear.y = self.y * self.speed
         msg.linear.z = self.z * self.speed
-        msg.angular.x = 0
-        msg.angular.y = 0
+        msg.angular.x = 0.0
+        msg.angular.y = 0.0
         msg.angular.z = self.th * self.turn
         self.publisher_.publish(msg)
 
@@ -110,14 +110,13 @@ def restoreTerminalSettings(old_settings):
 
 def vels(speed, turn):
     return "currently:\tspeed %s\tturn %s " % (speed,turn)
+def main():
 
-if __name__=="__main__":
     settings = saveTerminalSettings()
     rclpy.init(args=None)
 
     controller_run = controller()
-    rclpy.spin(controller_run)
-
+    
     speed = controller_run.speed
     turn = controller_run.turn
     speed_limit = 0.5
@@ -134,6 +133,7 @@ if __name__=="__main__":
 
     controller_run.update(x, y, z, th, speed, turn)
     controller_run.publish()
+
 
     while(1):
         key = get_key()
@@ -174,5 +174,8 @@ if __name__=="__main__":
     rclpy.shutdown()
     restoreTerminalSettings(settings)
         
+
+if __name__=="__main__":
+    main()
 
        
