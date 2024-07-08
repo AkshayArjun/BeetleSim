@@ -27,6 +27,7 @@ setup(
             'talker = rl_rover2.publisher:main',
             'controller = rl_rover2.controller:main',
             'controller2 = rl_rover2.controller2:main',
+            'laser_avoidance = rl_rover2.laser_avoidance:main',
         ],
     },
 )
