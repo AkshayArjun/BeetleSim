@@ -5,7 +5,7 @@ from sensor_msgs.msg import Range
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
 from rclpy.timer import Rate
-
+import math
 
 message = '''laser avoidance system is active'''
 
@@ -21,16 +21,29 @@ class ObstacleAvoider(Node):
 
     def listner_callback(self, msg):
         num_points = len(msg.ranges[150:210])
+        msg = self.data_cleaner(msg)
+
         right = sum(msg.ranges[150:180])
         left = sum(msg.ranges[180:210])
         print(right, left)
         print(num_points)
-        self.publishers_.publish(self.converter(right, left))
+        self.publishers_.publish(self.converter(right, left, msg))
      
         print(num_points)
+    
+    def data_cleaner(self , msg):
+        left = 0
+        right = 0 
+        k = 150
+        for i in msg.ranges[150:210]:
+            if i > 12:
+                msg.ranges[k] = 12
+            k+=1
+        
+        return msg
 
 
-    def converter(self, right, left):
+    def converter(self, right, left, msg):
         speed = 1.0
         turn = 1.0
         X = 0
@@ -44,15 +57,20 @@ class ObstacleAvoider(Node):
         vel.angular.x = 0.0
         vel.angular.y = 0.0
         vel.angular.z = th*turn 
+
         if right < left:
-            vel.angular.z = 0.1
-            vel.linear.x = 0.1
-        elif right > left:
-            vel.angular.z = -0.1
-            vel.linear.x = 0.1
+            if sum(msg.ranges[175:185]) < 10.0:
+                vel.linear.x = -2.0 
+            else:
+                vel.angular.z = 1.0
+                vel.linear.x = 0.5
         else:
-            vel.angular.z = 0.0
-            vel.linear.x = 0.1
+            if sum(msg.ranges[175:185]) < 10.0:
+                vel.linear.x = -2.0
+            else:
+                vel.angular.z = -1.0
+                vel.linear.x = 0.5
+       
         return vel
 
 def main(args=None):
