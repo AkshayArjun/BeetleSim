@@ -1,39 +1,68 @@
 import rclpy
 from rclpy.node import Node
+import rclpy.waitable
 from sensor_msgs.msg import Range
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
+from rclpy.timer import Rate
 
 
-msg = '''laser avoidance system is active'''
+message = '''laser avoidance system is active'''
 
-
-MAX_RANGE = 0.15
 
 
 class ObstacleAvoider(Node):
     def __init__(self):
         super().__init__('obstacle_avoider')
-
+        self.publishers_ = self.create_publisher(Twist, 'cmd_vel', 1)
         self.create_subscription(LaserScan, 'scan', self.listner_callback, 1)
         self.subscription = self.create_subscription
 
-    def listner_callback(self, msg):
-        num_points = len(msg.ranges)
-        print('number of point: ' , num_points)
 
-        print('angle at 0 :' , msg.ranges[0])
-        print('angle at 180 :' , msg.ranges[179])
-        print('angle at 360 :' , msg.ranges[359])
+    def listner_callback(self, msg):
+        num_points = len(msg.ranges[150:210])
+        right = sum(msg.ranges[150:180])
+        left = sum(msg.ranges[180:210])
+        print(right, left)
+        print(num_points)
+        self.publishers_.publish(self.converter(right, left))
+     
+        print(num_points)
+
+
+    def converter(self, right, left):
+        speed = 1.0
+        turn = 1.0
+        X = 0
+        Y = 0
+        Z = 0 
+        th = 0
+        vel = Twist()
+        vel.linear.x = X*speed
+        vel.linear.y = Y*speed
+        vel.linear.z = Z*speed
+        vel.angular.x = 0.0
+        vel.angular.y = 0.0
+        vel.angular.z = th*turn 
+        if right < left:
+            vel.angular.z = 0.1
+            vel.linear.x = 0.1
+        elif right > left:
+            vel.angular.z = -0.1
+            vel.linear.x = 0.1
+        else:
+            vel.angular.z = 0.0
+            vel.linear.x = 0.1
+        return vel
+
 def main(args=None):
+    print(message)
     rclpy.init(args=args)
     avoider = ObstacleAvoider()
     rclpy.spin(avoider)
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
     avoider.destroy_node()
     rclpy.shutdown()
+    print("obstacle avoidancenode has shutdown")
 
 
 if __name__ == '__main__':
