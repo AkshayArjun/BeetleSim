@@ -1,0 +1,26 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/akshay/rl_ws/build/rl_rover2",
+        "/home/akshay/rl_ws/install/rl_rover2/lib/python3.10/site-packages",
+        "/home/akshay/turtlebot3_ws/build/turtlebot3_teleop",
+        "/home/akshay/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages",
+        "/home/akshay/turtlebot3_ws/build/turtlebot3_example",
+        "/home/akshay/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages",
+        "/home/akshay/turtlebot3_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages",
+        "/home/akshay/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/akshay/rl_ws/build/rl_rover2",
+        "/home/akshay/rl_ws/install/rl_rover2/lib/python3.10/site-packages",
+        "/home/akshay/turtlebot3_ws/build/turtlebot3_teleop",
+        "/home/akshay/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages",
+        "/home/akshay/turtlebot3_ws/build/turtlebot3_example",
+        "/home/akshay/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages",
+        "/home/akshay/turtlebot3_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages",
+        "/home/akshay/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

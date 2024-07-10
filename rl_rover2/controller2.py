@@ -57,7 +57,7 @@ class ControllerNode(Node):
         super().__init__("controller")
 
         self.controller_publisher_ = self.create_publisher(Twist, "cmd_vel", 1)
-        self.controller_timer_ = self.create_timer(2.0, self.publish_controller)
+        self.controller_timer_ = self.create_timer(0.5, self.publish_controller)
     
     def publish_controller(self):
         velo = self.converter()
