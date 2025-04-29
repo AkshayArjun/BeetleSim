@@ -83,9 +83,11 @@ colcon build
 # Source the workspace
 source install/setup.bash
 
+
 ```
+--- 
 
-![WhatsApp Image 2025-04-29 at 08 24 29_953fc6d4](https://github.com/user-attachments/assets/0723753d-f62a-4d54-9905-950ac09a0102)
 
-https://github.com/user-attachments/assets/926e67c9-741e-476b-889b-83b9bc8ca877
 
+https://github.com/user-attachments/assets/9d2fd66c-62ac-46b8-a441-96e29ba9a314
+![Beetle v1](https://github.com/user-attachments/assets/67026e21-c636-4c04-a8f9-87400a79cc99)
