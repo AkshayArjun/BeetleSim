@@ -26,11 +26,45 @@
 - Supported LIDAR and IMU sensor simulation plugins
 
 ---
-
-## Whats next 
-
-- Implemetnting RL based algortihmns Like DDPG, SAC for autonomous navigation.
-- Implementing a dynamic APF algorithm
+```
+├── LICENSE
+├── README.md
+├── build
+│   ├── bdist.linux-x86_64
+│   └── lib
+│       └── rl_rover2
+│           ├── __init__.py
+│           ├── controller.py
+│           ├── controller2.py
+│           ├── laser_avoidance.py
+│           ├── odom_val.py
+│           └── publisher.py
+├── config
+│   └── mapper_params_online_async.yaml
+├── description
+│   ├── gazebo_control.xacro
+│   ├── inertial_macros.xacro
+│   ├── lidar.xacro
+│   ├── robot_core.xacro
+│   └── rover.urdf.xacro
+├── launch
+│   ├── description.launch.py
+│   └── gzsim.launch.py
+├── package.xml
+├── resource
+│   └── rl_rover2
+├── rl_rover2
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── controller.py
+│   ├── controller2.py
+│   ├── laser_avoidance.py
+│   ├── odom_val.py
+│   └── publisher.py
+├── setup.cfg
+├── setup.py
+```
+--- 
 
 ## Installation
 
@@ -51,7 +85,7 @@ source install/setup.bash
 
 ```
 
+![WhatsApp Image 2025-04-29 at 08 24 29_953fc6d4](https://github.com/user-attachments/assets/0723753d-f62a-4d54-9905-950ac09a0102)
 
-
-
+https://github.com/user-attachments/assets/926e67c9-741e-476b-889b-83b9bc8ca877
 
