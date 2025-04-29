@@ -1,6 +1,6 @@
 # BeetleSim
 
-**BeetleSim** is a virtual simulation platform designed for the autonomous warehouse vehicle built by the Automation and Robotics Club of BITS hyderabad, **Beetle**. Built on **ROS 2**, BeetleSim provides a realistic environment to develop, test, and validate navigation algorithms, SLAM, laser-based guidance, and warehouse logistics operations.
+**BeetleSim** is a virtual simulation platform designed for the autonomous warehouse vehicle built by the Automation and Robotics Club of BITS Hyderabad, **Beetle**. Built on **ROS 2**, BeetleSim provides a realistic environment to develop, test, and validate navigation algorithms, SLAM, laser-based guidance, and warehouse logistics operations.
 
 ---
 
@@ -15,6 +15,10 @@
 - Extendable framework to support multi-robot systems and fleet coordination
 
 ---
+
+## Future implementation 
+- RL based obstacle avoidance and navigation methods using algorithmns like SAC/ DDPG.
+- Implementation of artificial potential fields as a method of point to point navigation
 
 ## Requirements
 
@@ -86,8 +90,8 @@ source install/setup.bash
 
 ```
 --- 
-
-
-
-https://github.com/user-attachments/assets/9d2fd66c-62ac-46b8-a441-96e29ba9a314
 ![Beetle v1](https://github.com/user-attachments/assets/67026e21-c636-4c04-a8f9-87400a79cc99)
+
+
+https://github.com/user-attachments/assets/c13a082c-2ce2-4b7e-93b6-ef93759f8239
+
